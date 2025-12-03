@@ -1,0 +1,27 @@
+.heart {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: -20px;
+    background-color: var(--color, red);
+    transform: rotate(45deg);
+    animation: float 4s linear infinite;
+    z-index: 1;
+}
+
+.heart:before, .heart:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: var(--color, red);
+    border-radius: 50%;
+}
+
+.heart:before { top: -10px; left: 0; }
+.heart:after { left: -10px; top: 0; }
+
+@keyframes float {
+    0% { opacity: 1; transform: translateY(0) rotate(45deg); }
+    100% { opacity: 0; transform: translateY(-900px) rotate(45deg); }
+}

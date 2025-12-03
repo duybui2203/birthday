@@ -1,0 +1,205 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffdde8;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 40px;
+    position: relative;
+    z-index: 2; /* nổi lên trên tim bay */
+}
+
+.avatar {
+    width: 220px;
+    height: 260px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(255, 0, 100, 0.3);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.box {
+    text-align: center;
+    width: 260px;
+}
+
+h2 {
+    color: #ff3172;
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin-bottom: 20px;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    padding: 18px;
+    background: white;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    transition: 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.del {
+    background: #ff4d6d;
+    color: white;
+}
+
+.ok {
+    background: #ff7bd2;
+    color: white;
+}
+
+.msg {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #ffee00;
+    font-weight: bold;
+    height: 25px;
+}
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+    transform: scale(0.95);
+}
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+/* --- Responsive cho MOBILE --- */
+@media (max-width: 768px) {
+
+    body {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    .container {
+        flex-direction: column;     /* xếp dọc */
+        gap: 20px;
+        height: 100vh;
+        padding: 10px;
+    }
+
+    /* Avatar thu nhỏ theo màn hình */
+    .avatar {
+        width: 60vw;                /* chiếm 60% chiều ngang */
+        max-width: 200px;
+        height: auto;
+        aspect-ratio: 4/4;          /* giữ tỉ lệ 3:4 */
+        border-radius: 20px;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Box nhập pass */
+    .box {
+        margin-left: 10%;
+        margin-right: 10%;
+        width: auto;                /* gần full màn hình */
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input {
+        font-size: 20px;
+        padding: 14px;
+    }
+    * {
+    box-sizing: border-box;
+}
+
+    /* Phím bấm lớn, khoảng cách rộng */
+    .keypad {
+        gap: 13px;
+    }
+
+    .btn {
+        padding: 20px;
+        font-size: 22px;
+        border-radius: 18px;
+    }
+    .btn {
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent; /* tắt highlight xanh trên iPhone */
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+    transform: scale(0.95);
+}
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+}

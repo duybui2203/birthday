@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Hương</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="heart.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+</head>
+<body>
+
+<audio id="real-music" src="happy.mp3" loop></audio>
+
+
+<!-- TIM BAY -->
+<script src="heart.js"></script>
+
+<div class="container">
+
+    <!-- Ảnh gái -->
+    <div class="avatar">
+        <img src="huong.png">
+    </div>
+
+    <!-- Ô nhập pass -->
+    <div class="box">
+        <h2>NHÌN GÌ NHẬP PASS ĐI NGƯỜI ĐẸP</h2>
+
+        <input id="password" type="text" placeholder="dd/mm/yyyy" readonly>
+
+        <div class="keypad">
+            <div class="btn" onclick="startMusicOnce(); press('1')">1</div>
+            <div class="btn" onclick="startMusicOnce(); press('2')">2</div>
+            <div class="btn" onclick="startMusicOnce(); press('3')">3</div>
+            <div class="btn" onclick="startMusicOnce(); press('4')">4</div>
+            <div class="btn" onclick="startMusicOnce(); press('5')">5</div>
+            <div class="btn" onclick="startMusicOnce(); press('6')">6</div>
+            <div class="btn" onclick="startMusicOnce(); press('7')">7</div>
+            <div class="btn" onclick="startMusicOnce(); press('8')">8</div>
+            <div class="btn" onclick="startMusicOnce(); press('9')">9</div>
+            <div class="btn del" onclick="startMusicOnce(); del()">X</div>
+            <div class="btn" onclick="startMusicOnce(); press('0')">0</div>
+            <div class="btn ok" onclick="startMusicOnce(); check()">✔</div>
+        </div>
+
+        <div class="msg" id="msg"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
