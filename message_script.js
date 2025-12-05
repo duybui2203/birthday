@@ -1,14 +1,3 @@
-// 1. Xử lý nhạc nền (giữ nguyên)
-window.addEventListener('DOMContentLoaded', () => {
-    const music = document.getElementById("real-music");
-    const time = localStorage.getItem("musicTime");
-    if (time) music.currentTime = parseFloat(time);
-    
-    // Cố gắng phát nhạc
-    music.play().catch(err => console.log("Chờ tương tác để phát nhạc:", err));
-});
-
-// 2. Logic chính của thiệp (Đã xóa sự kiện click)
 (function() {
   function $(id) {
     return document.getElementById(id);
@@ -26,8 +15,8 @@ window.addEventListener('DOMContentLoaded', () => {
   ];
 
   const imgs = [
-    "duy.png",   // Ảnh ban đầu
-    "nhung.png"  // Ảnh thay đổi sau đó
+    "duy.png",
+    "nhung.png"
   ];
 
   function typeText(text, callback) {
@@ -45,7 +34,6 @@ window.addEventListener('DOMContentLoaded', () => {
       typing();
   }
 
-  // --- HÀM MỞ THIỆP TỰ ĐỘNG ---
   function openCard() {
     card.setAttribute('class', 'open-half');
     if (timer) clearTimeout(timer);
@@ -54,22 +42,19 @@ window.addEventListener('DOMContentLoaded', () => {
       card.setAttribute('class', 'open-fully');
       timer = null;
 
-      // 1. Bắt đầu đoạn text đầu tiên
       typeText(texts[0], function() {
-        // Sau khi đoạn text 1 xong, delay 1s
         setTimeout(function() {
-              // Đổi ảnh
               cardImgDiv.style.backgroundImage = `url(${imgs[1]})`;
               
-              // 2. Bắt đầu đoạn text thứ hai
               typeText(texts[1], function() {
-                  // Sau khi text 2 xong, chờ 3s rồi chuyển trang
                   setTimeout(function() {
+                     // Lưu thời gian nhạc trước khi chuyển trang (nếu cần)
                      const music = document.getElementById("real-music");
                      try {
                         localStorage.setItem("musicTime", music.currentTime);
                      } catch(e) {}
-                     window.location.href = "birthday.html"; // Chuyển sang trang pháo hoa
+                     
+                     window.location.href = "birthday.html"; 
                   }, 3000); 
               });
         }, 1000);
@@ -78,8 +63,28 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   }
 
-  // --- KÍCH HOẠT TỰ ĐỘNG ---
-  // 4000ms = 4 giây (2s vẽ bánh + 2s delay chờ)
-  setTimeout(openCard, 6500); 
+  // --- PHẦN QUAN TRỌNG ĐÃ SỬA ---
+  
+  // Tạo hàm xử lý khi người dùng bấm vào thiệp
+  function startExperience() {
+      // 1. Xử lý nhạc
+      const music = document.getElementById("real-music");
+      const time = localStorage.getItem("musicTime");
+      
+      // Đồng bộ thời gian nếu có
+      if (time) music.currentTime = parseFloat(time);
+      
+      // Phát nhạc (Trình duyệt sẽ cho phép vì đây là trong sự kiện click)
+      music.play().then(() => {
+          console.log("Music playing...");
+      }).catch(e => console.log("Lỗi phát nhạc:", e));
+
+      // 2. Chạy hiệu ứng mở thiệp
+      openCard();
+  }
+
+  // Gán sự kiện Click cho thẻ Card
+  // { once: true } nghĩa là chỉ bấm được 1 lần, bấm lần 2 sẽ không chạy lại code này (tránh lỗi)
+  card.addEventListener('click', startExperience, { once: true });
 
 }());

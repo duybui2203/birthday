@@ -32,19 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Tạo và phát âm thanh
     function playFireworkSound() {
-        if (!audioContext || !soundBuffer) return;
+        // if (!audioContext || !soundBuffer) return;
 
-        const source = audioContext.createBufferSource();
-        source.buffer = soundBuffer;
+        // const source = audioContext.createBufferSource();
+        // source.buffer = soundBuffer;
         
-        // Điều chỉnh âm lượng (giảm chút để không quá to)
-        const gainNode = audioContext.createGain();
-        gainNode.gain.value = 0.5; // Giảm âm lượng còn 50%
+        // // Điều chỉnh âm lượng (giảm chút để không quá to)
+        // const gainNode = audioContext.createGain();
+        // gainNode.gain.value = 0.5; // Giảm âm lượng còn 50%
         
-        source.connect(gainNode);
-        gainNode.connect(audioContext.destination);
+        // source.connect(gainNode);
+        // gainNode.connect(audioContext.destination);
         
-        source.start(0);
+        // source.start(0);
     }
 
     // Tải âm thanh nổ ngay khi DOMContentLoaded chạy
