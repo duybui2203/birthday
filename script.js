@@ -24,11 +24,11 @@ function check() {
 let musicStarted = false;
 
 function startMusicOnce() {
-    if (!musicStarted) {
-        const music = document.getElementById("real-music");
-        music.volume = 0.8;
-        music.loop = true; // lặp lại
-        music.play().catch(err => console.log(err));
-        musicStarted = true;  // đánh dấu đã phát
-    }
+    // if (!musicStarted) {
+    //     const music = document.getElementById("real-music");
+    //     music.volume = 0.8;
+    //     music.loop = true; // lặp lại
+    //     music.play().catch(err => console.log(err));
+    //     musicStarted = true;  // đánh dấu đã phát
+    // }
 }

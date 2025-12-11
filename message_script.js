@@ -73,12 +73,12 @@
       
       // Đồng bộ thời gian nếu có
       if (time) music.currentTime = parseFloat(time);
-      
-      // Phát nhạc (Trình duyệt sẽ cho phép vì đây là trong sự kiện click)
-      music.play().then(() => {
-          console.log("Music playing...");
-      }).catch(e => console.log("Lỗi phát nhạc:", e));
-
+     // Nếu nhạc chưa từng play hoặc đang pause → play
+    if (music.paused || music.currentTime === 0 || music.ended) {
+        music.play()
+            .then(() => console.log("Music playing..."))
+            .catch(e => console.log("Lỗi phát nhạc:", e));
+    }
       // 2. Chạy hiệu ứng mở thiệp
       openCard();
   }
